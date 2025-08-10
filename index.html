@@ -1,355 +1,451 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>ER</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #ffffff;
-        color: #000;
-    }
+    <meta charset="UTF-8">
+    <title>Eder Ribeiro | Analista de Segurança</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007aff; /* iOS blue */
+            --background-color: #f0f2f5;
+            --card-color: rgba(255, 255, 255, 0.7);
+            --text-color: #333;
+            --secondary-text-color: #666;
+            --border-color: rgba(200, 200, 200, 0.3);
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --header-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    /* Barra de navegação */
-    .navbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: #1877f2;
-        padding: 10px 20px;
-        color: white;
-        font-weight: bold;
-        flex-wrap: wrap;
-    }
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            background-image: url('https://images.unsplash.com/photo-1510915228340-29c85a42dc7fe?q=80&w=2940&auto=format&fit=crop'); /* Replace with your desired background image */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
 
-    .navbar-logo {
-        background-color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        margin-right: 10px;
-        border-radius: 3px;
-    }
+        /* Frosted glass effect for the main container */
+        .page-container {
+            backdrop-filter: blur(20px);
+            background-color: rgba(255, 255, 255, 0.2);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .navbar-logo img {
-        width: 100%;
-        height: auto;
-    }
-
-    .navbar-title {
-        font-size: 18px;
-    }
-
-    .navbar-menu {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 5px;
-    }
-
-    .navbar-menu a {
-        color: white;
-        text-decoration: none;
-        font-weight: normal;
-        cursor: pointer;
-    }
-
-    .navbar-menu a:hover {
-        text-decoration: underline;
-    }
-
-    /* Conteúdo */
-    .section {
-        display: none;
-        padding: 30px;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .section.active {
-        display: block;
-    }
-
-    .section h2 {
-        color: #1877f2;
-    }
-
-    /* Perfil */
-    .profile-container {
-        display: flex;
-        align-items: flex-start;
-        flex-wrap: wrap;
-    }
-
-    .profile-photo img {
-        max-width: 150px;
-        height: auto;
-        border-radius: 5px;
-        margin-right: 20px;
-    }
-
-    .profile-info p {
-        margin: 5px 0;
-        color: gray;
-    }
-
-    .icon-line {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin: 5px 0;
-    }
-
-    .icon-line img {
-        width: 18px;
-        height: 18px;
-    }
-
-    /* Lista de Competências */
-    .competencias ul {
-        list-style-type: none;
-        padding-left: 0;
-    }
-
-    .competencias li {
-        margin-bottom: 15px;
-    }
-
-    .competencias strong {
-        color: #333;
-    }
-
-    /* Depoimentos */
-    blockquote {
-        font-style: italic;
-        border-left: 4px solid #1877f2;
-        padding-left: 10px;
-        color: #555;
-    }
-
-    /* Formulário de Contato */
-    form {
-        display: flex;
-        flex-direction: column;
-        max-width: 400px;
-    }
-
-    input, textarea, button {
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 14px;
-    }
-
-    button {
-        background-color: #1877f2;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #145dc4;
-    }
-
-    /* Responsividade */
-    @media (max-width: 768px) {
+        /* Navigation Bar */
         .navbar {
-            flex-direction: column;
-            align-items: flex-start;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--card-color);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            color: var(--text-color);
+            font-weight: bold;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--header-shadow);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .navbar-menu {
-            flex-direction: column;
-            width: 100%;
-        }
-
-        .profile-container {
-            flex-direction: column;
+        .navbar-logo {
+            display: flex;
             align-items: center;
         }
 
-        .profile-photo {
-            margin-bottom: 15px;
-            margin-right: 0;
+        .navbar-logo img {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+        }
+
+        .navbar-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .navbar-menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 0;
+        }
+
+        .navbar-menu a {
+            color: var(--secondary-text-color);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .navbar-menu a:hover,
+        .navbar-menu a.active {
+            color: var(--primary-color);
+        }
+
+        /* Main content container */
+        .content {
+            padding: 20px;
+            max-width: 900px;
+            margin: 20px auto;
+            flex-grow: 1;
+        }
+
+        /* Section styles */
+        .section {
+            display: none;
+            padding: 30px;
+            background: var(--card-color);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-top: 0;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* Profile */
+        .profile-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .profile-photo img {
-            max-width: 120px;
+            max-width: 150px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
         }
 
-        form {
-            width: 100%;
+        .profile-info p {
+            margin: 5px 0;
+            color: var(--secondary-text-color);
         }
-    }
-</style>
+
+        .icon-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 8px 0;
+        }
+
+        .icon-line img {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+        .icon-line a {
+            color: var(--secondary-text-color);
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .icon-line a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Competências List */
+        .competencias ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .competencias li {
+            background-color: rgba(0, 0, 0, 0.03);
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .competencias li:hover {
+            transform: translateX(5px);
+        }
+
+        .competencias strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Depoimentos */
+        blockquote {
+            font-style: italic;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 20px;
+            color: var(--secondary-text-color);
+            margin: 0;
+        }
+
+        /* Form */
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+        }
+
+        input, textarea, button {
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            color: var(--text-color);
+            transition: border-color 0.2s ease-in-out;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        /* Links */
+        .section a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Cibersegurança em Ação section */
+        #ciber {
+            padding-bottom: 15px;
+        }
+
+        #ciber p {
+            margin-top: 20px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar-menu {
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+                margin-top: 15px;
+            }
+            .content {
+                padding: 10px;
+            }
+            .profile-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .profile-photo {
+                margin-bottom: 15px;
+            }
+            form {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Barra superior -->
-    <div class="navbar">
-        <div style="display: flex; align-items: center;">
+    <div class="page-container">
+        <div class="navbar">
             <div class="navbar-logo">
                 <img src="https://cdn-icons-png.flaticon.com/512/18133/18133396.png" alt="Logo E Corp">
+                <div class="navbar-title">Analista de Segurança</div>
             </div>
-            <div class="navbar-title">Analista de Segurança da Informação</div>
-        </div>
-        <div class="navbar-menu">
-            <a onclick="showSection('perfil')">Perfil</a>
-            <a onclick="showSection('competencias')">Competências</a>
-            <a onclick="showSection('lattes')">Currículo Lattes</a>
-            <a onclick="showSection('ciber')">Cibersegurança em Ação</a>
-            <a onclick="showSection('depoimentos')">Depoimentos</a>
-            <a onclick="showSection('contato')">Contato</a>
-        </div>
-    </div>
-
-    <!-- Perfil -->
-    <div class="section active" id="perfil">
-        <div class="profile-container">
-            <div class="profile-photo">
-                <img src="f9d93f3f-3263-4ba6-aa68-c8d2123596bc.jpg" alt="Foto de Eder">
-            </div>
-            <div class="profile-info">
-                <h2>Eder Ribeiro</h2>
-                <p>Security Analyst</p>
-
-                <div class="icon-line">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
-                    <span>eder.ribeiro75@protonmail.com</span>
-                </div>
-
-                <div class="icon-line">
-                    <img src="https://cdn-icons-png.flaticon.com/512/6783/6783360.png" alt="Empresa">
-                    <a href="https://www.allsecti.xyz" target="_blank" style="color: inherit; text-decoration: none;">
-                        www.allsecti.xyz
-                    </a>
-                </div>
-
-                <div class="icon-line">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Phone_icon.png" alt="Telefone">
-                    <span>Tel: 34 9 9110 6738</span>
-                </div>
+            <div class="navbar-menu">
+                <a class="nav-link active" onclick="showSection('perfil', this)">Perfil</a>
+                <a class="nav-link" onclick="showSection('competencias', this)">Competências</a>
+                <a class="nav-link" onclick="showSection('lattes', this)">Currículo Lattes</a>
+                <a class="nav-link" onclick="showSection('ciber', this)">Cibersegurança em Ação</a>
+                <a class="nav-link" onclick="showSection('depoimentos', this)">Depoimentos</a>
+                <a class="nav-link" onclick="showSection('contato', this)">Contato</a>
             </div>
         </div>
-    </div>
 
-    <!-- Competências -->
-    <div class="section competencias" id="competencias">
-        <h2>Competências</h2>
-        <ul>
-            <li><strong>Testes de Invasão (Pentest):</strong> Identificação e exploração de vulnerabilidades em sistemas e aplicações para simular ataques e fortalecer defesas.</li>
-            <li><strong>Análise de Vulnerabilidades:</strong> Avaliação sistemática de sistemas, redes e softwares para descobrir falhas de segurança antes que sejam exploradas.</li>
-            <li><strong>Hardening de Servidores:</strong> Implementação de configurações de segurança e boas práticas para reduzir a superfície de ataque de servidores.</li>
-            <li><strong>Monitoramento e Resposta a Incidentes:</strong> Acompanhamento contínuo de eventos de segurança e ações rápidas para conter, erradicar e recuperar sistemas após incidentes.</li>
-            <li><strong>Segurança em Redes e Sistemas:</strong> Desenvolvimento e aplicação de estratégias para proteger a infraestrutura de rede e os sistemas operacionais contra ameaças.</li>
-            <li><strong>Auditoria e Conformidade (LGPD, ISO 27001):</strong> Verificação e garantia de que as políticas e procedimentos de segurança estejam em conformidade com regulamentações e padrões do setor.</li>
-        </ul>
-    </div>
+        <div class="content">
 
-    <!-- Currículo Lattes -->
-    <div class="section" id="lattes">
-        <h2>Currículo Lattes</h2>
-        <a href="https://lattes.cnpq.br/1429564725419946" target="_blank">Acessar Currículo Lattes</a>
-    </div>
+            <div class="section active" id="perfil">
+                <div class="profile-container">
+                    <div class="profile-photo">
+                        <img src="f9d93f3f-3263-4ba6-aa68-c8d2123596bc.jpg" alt="Foto de Eder">
+                    </div>
+                    <div class="profile-info">
+                        <h2>Eder Ribeiro</h2>
+                        <p>Security Analyst</p>
+                        <div class="icon-line">
+                            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
+                            <span>eder.ribeiro75@protonmail.com</span>
+                        </div>
+                        <div class="icon-line">
+                            <img src="https://cdn-icons-png.flaticon.com/512/6783/6783360.png" alt="Empresa">
+                            <a href="https://www.allsecti.xyz" target="_blank">www.allsecti.xyz</a>
+                        </div>
+                        <div class="icon-line">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Phone_icon.png" alt="Telefone">
+                            <span>Tel: 34 9 9110 6738</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Cibersegurança em Ação -->
-    <div class="section" id="ciber">
-        <h2>Cibersegurança em Ação</h2>
-        
-    </div><p>Após ataque hacker, empresa de logística recupera 100 TB de backups e higieniza 280 servidores</p>
-        <a href="https://convergenciadigital.com.br/seguranca/apos-ataque-hacker-empresa-de-logistica-recupera-100-tb-de-backups-e-higieniza-280-servidores" target="_blank">Confira a reportagem</a>
+            <div class="section competencias" id="competencias">
+                <h2>Competências</h2>
+                <ul>
+                    <li>
+                        <strong>Testes de Invasão (Pentest):</strong> Identificação e exploração de vulnerabilidades em sistemas e aplicações para simular ataques e fortalecer defesas.
+                    </li>
+                    <li>
+                        <strong>Análise de Vulnerabilidades:</strong> Avaliação sistemática de sistemas, redes e softwares para descobrir falhas de segurança antes que sejam exploradas.
+                    </li>
+                    <li>
+                        <strong>Hardening de Servidores:</strong> Implementação de configurações de segurança e boas práticas para reduzir a superfície de ataque de servidores.
+                    </li>
+                    <li>
+                        <strong>Monitoramento e Resposta a Incidentes:</strong> Acompanhamento contínuo de eventos de segurança e ações rápidas para conter, erradicar e recuperar sistemas após incidentes.
+                    </li>
+                    <li>
+                        <strong>Segurança em Redes e Sistemas:</strong> Desenvolvimento e aplicação de estratégias para proteger a infraestrutura de rede e os sistemas operacionais contra ameaças.
+                    </li>
+                    <li>
+                        <strong>Auditoria e Conformidade (LGPD, ISO 27001):</strong> Verificação e garantia de que as políticas e procedimentos de segurança estejam em conformidade com regulamentações e padrões do setor.
+                    </li>
+                </ul>
+            </div>
 
-        <p>Polícia Civil apura suposto ataque cibernético contra a Prefeitura de Ribeirão Vermelho, MG</p>
-        <a href="https://g1.globo.com/mg/sul-de-minas/noticia/2025/07/04/policia-civil-apura-suposto-ataque-cibernetico-contra-a-prefeitura-de-ribeirao-vermelho-mg.ghtml" target="_blank">Confira a reportagem</a>
+            <div class="section" id="lattes">
+                <h2>Currículo Lattes</h2>
+                <a href="https://lattes.cnpq.br/1429564725419946" target="_blank">Acessar Currículo Lattes</a>
+            </div>
 
-<p>Portais da Receita Federal de MG e MEC sofrem ataque hacker</p>
-        <a href="https://securityleaders.com.br/portais-da-receita-federal-de-mg-e-mec-sofrem-ataque-hacker" target="_blank">Confira a reportagem</a>
+            <div class="section" id="ciber">
+                <h2>Cibersegurança em Ação</h2>
+                <p>Após ataque hacker, empresa de logística recupera 100 TB de backups e higieniza 280 servidores</p>
+                <a href="https://convergenciadigital.com.br/seguranca/apos-ataque-hacker-empresa-de-logistica-recupera-100-tb-de-backups-e-higieniza-280-servidores" target="_blank">Confira a reportagem</a>
 
-<section id="seguranca-digital" style="font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; max-width:900px; margin:24px auto; padding:20px; background:#ffffff; border:1px solid #e6e6e6; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.04); color:#111;">
-  <header style="display:flex; align-items:center; gap:16px; margin-bottom:14px;">
-    <div style="width:56px; height:56px; display:grid; place-items:center; background:linear-gradient(135deg,#0ea5a4,#0369a1); color:#fff; border-radius:12px; font-weight:700; font-size:20px;">
-      🔐
-    </div>
-    <div>
-      <h2 style="margin:0; font-size:20px; line-height:1.2;">Leis que existem, mas não seguram o crime digital</h2>
-      <p style="margin:4px 0 0 0; color:#555; font-size:14px;">Por que contar apenas com a lei não é suficiente — e o que você pode fazer hoje.</p>
-    </div>
-  </header>
+                <p>Polícia Civil apura suposto ataque cibernético contra a Prefeitura de Ribeirão Vermelho, MG</p>
+                <a href="https://g1.globo.com/mg/sul-de-minas/noticia/2025/07/04/policia-civil-apura-suposto-ataque-cibernetico-contra-a-prefeitura-de-ribeirao-vermelho-mg.ghtml" target="_blank">Confira a reportagem</a>
 
-  <article style="line-height:1.6; color:#222; font-size:15px;">
-    <p><strong>No papel</strong>, o Brasil tem dois instrumentos importantes contra crimes e abusos digitais: a <strong>Lei Carolina Dieckmann</strong>, que criminaliza invasões e roubo de dados, e a <strong>Lei Geral de Proteção de Dados (LGPD)</strong>, que regula o uso e tratamento de informações pessoais.</p>
+                <p>Portais da Receita Federal de MG e MEC sofrem ataque hacker</p>
+                <a href="https://securityleaders.com.br/portais-da-receita-federal-de-mg-e-mec-sofrem-ataque-hacker" target="_blank">Confira a reportagem</a>
 
-    <p>Na teoria, esse conjunto legal deveria proteger cidadãos e empresas contra ataques cibernéticos e uso indevido de dados. <strong>Na prática… não é bem assim.</strong></p>
+                <div class="card" style="padding:20px; margin-top:20px; background:rgba(255,255,255,0.7); border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.05); backdrop-filter:blur(10px);">
+                    <header style="display:flex; align-items:center; gap:16px; margin-bottom:14px;">
+                        <div style="width:48px; height:48px; display:grid; place-items:center; background:linear-gradient(135deg,#0ea5a4,#0369a1); color:#fff; border-radius:10px; font-weight:700; font-size:24px;">
+                            🔐
+                        </div>
+                        <div>
+                            <h3 style="margin:0; font-size:20px; line-height:1.2;">Leis que existem, mas não seguram o crime digital</h3>
+                            <p style="margin:4px 0 0 0; color:#555; font-size:14px;">Por que contar apenas com a lei não é suficiente — e o que você pode fazer hoje.</p>
+                        </div>
+                    </header>
+                    <article style="line-height:1.6; color:#222; font-size:15px;">
+                        <p><strong>No papel</strong>, o Brasil tem dois instrumentos importantes contra crimes e abusos digitais: a <strong>Lei Carolina Dieckmann</strong>, que criminaliza invasões e roubo de dados, e a <strong>Lei Geral de Proteção de Dados (LGPD)</strong>, que regula o uso e tratamento de informações pessoais.</p>
+                        <p>Na teoria, esse conjunto legal deveria proteger cidadãos e empresas contra ataques cibernéticos e uso indevido de dados. <strong>Na prática… não é bem assim.</strong></p>
+                        <p>Nos últimos anos vimos ataques hackers contra sistemas do governo — incluindo <em>Ministério da Saúde, Tesouro Nacional, Tribunal Superior Eleitoral e Polícia Federal</em>. Em paralelo, ocorreram vazamentos massivos contendo CPF, endereço, telefone e até histórico de crédito de milhões de brasileiros.</p>
+                        <p><strong>E quantas pessoas ou empresas você viu serem punidas de fato?</strong> No campo administrativo, onde a LGPD se aplica, praticamente ninguém sofreu sanções exemplares — ou, quando houve punição, ela não foi amplamente divulgada.</p>
+                        <p>O motivo é simples: leis não são barreiras físicas. Elas <strong>não impedem</strong> o crime; apenas descrevem o que é proibido e determinam punições caso o infrator seja identificado e condenado. Se não há investigação eficaz, perícia qualificada e punição rápida, a lei vira apenas uma referência moral, não uma proteção real.</p>
+                        <hr style="border:none; border-top:1px solid #f0f0f0; margin:18px 0;">
+                        <h3 style="margin:10px 0 8px 0; font-size:18px;">Então, como se proteger de verdade?</h3>
+                        <p>A verdade é dura: <strong>nenhuma lei vai impedir um criminoso digital de agir</strong>. Se você quer manter seus dados, seu dinheiro e sua privacidade seguros, precisa <strong>aprender a se defender antes</strong> que o problema aconteça.</p>
+                        <section style="background:rgba(0,122,255,0.05); border:1px solid rgba(0,122,255,0.1); padding:12px; border-radius:8px; margin:12px 0;">
+                            <h4 style="margin:0 0 10px 0;">💻 Curso — <em>Blindagem Digital: como não cair em golpes</em></h4>
+                            <p style="margin:0 0 10px 0; color:#333;">Um curso prático e direto ao ponto para que você pare de depender apenas da lei — e passe a se proteger de verdade.</p>
+                            <ul style="margin:0 0 12px 0; padding:0 0 0 18px; color:#222;">
+                                <li style="margin:8px 0;">✅ Identificar e evitar golpes de phishing, clonagem de WhatsApp e falsas promoções.</li>
+                                <li style="margin:8px 0;">✅ Criar senhas fortes e gerenciá-las com segurança.</li>
+                                <li style="margin:8px 0;">✅ Ativar autenticação em dois fatores (2FA) e impedir invasões.</li>
+                                <li style="margin:8px 0;">✅ Reduzir exposição de dados pessoais na internet.</li>
+                                <li style="margin:8px 0;">✅ Fazer backups seguros e recuperar dados sem pânico.</li>
+                                <li style="margin:8px 0;">✅ Reconhecer sinais de monitoramento ou invasão no seu dispositivo.</li>
+                            </ul>
+                            <p style="margin:6px 0; color:#444;"><strong>🎯 Bônus:</strong> Lista atualizada das principais fraudes ativas no Brasil e como identificá-las em segundos.</p>
+                            <div style="margin-top:14px;">
+                                <a href="#" role="button" style="display:inline-block; text-decoration:none; background:var(--primary-color); color:#fff; padding:12px 18px; border-radius:10px; font-weight:600; box-shadow:0 6px 18px rgba(0,122,255,0.2);" aria-label="Garanta sua vaga no curso Blindagem Digital">Disponível em breve</a>
+                            </div>
+                        </section>
+                        <p style="margin-top:12px; color:#666;">Se você não quer ser mais uma estatística nos noticiários de cibercrime, <strong>comece hoje a proteger seu mundo digital</strong>. Substitua o link do botão pela página do seu curso e disponibilize imediatamente.</p>
+                    </article>
+                </div>
+            </div>
 
-    <p>Nos últimos anos vimos ataques hackers contra sistemas do governo — incluindo <em>Ministério da Saúde, Tesouro Nacional, Tribunal Superior Eleitoral e Polícia Federal</em>. Em paralelo, ocorreram vazamentos massivos contendo CPF, endereço, telefone e até histórico de crédito de milhões de brasileiros.</p>
+            <div class="section" id="depoimentos">
+                <h2>Depoimentos</h2>
+                <blockquote>
+                    "Em breve"
+                    <br><br>
+                    — xxxxxxx
+                </blockquote>
+            </div>
 
-    <p><strong>E quantas pessoas ou empresas você viu serem punidas de fato?</strong> No campo administrativo, onde a LGPD se aplica, praticamente ninguém sofreu sanções exemplares — ou, quando houve punição, ela não foi amplamente divulgada.</p>
+            <div class="section" id="contato">
+                <h2>Contato</h2>
+                <p>Preencha o formulário abaixo para entrar em contato diretamente:</p>
+                <form action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+                    <input type="text" name="nome" placeholder="Seu nome" required>
+                    <input type="email" name="_replyto" placeholder="Seu email" required>
+                    <textarea name="mensagem" placeholder="Sua mensagem" rows="5" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
 
-    <p>O motivo é simples: leis não são barreiras físicas. Elas <strong>não impedem</strong> o crime; apenas descrevem o que é proibido e determinam punições caso o infrator seja identificado e condenado. Se não há investigação eficaz, perícia qualificada e punição rápida, a lei vira apenas uma referência moral, não uma proteção real.</p>
-
-    <hr style="border:none; border-top:1px solid #f0f0f0; margin:18px 0;">
-
-    <h3 style="margin:10px 0 8px 0; font-size:18px;">Então, como se proteger de verdade?</h3>
-    <p>A verdade é dura: <strong>nenhuma lei vai impedir um criminoso digital de agir</strong>. Se você quer manter seus dados, seu dinheiro e sua privacidade seguros, precisa <strong>aprender a se defender antes</strong> que o problema aconteça.</p>
-
-    <section style="background:#f8fbff; border:1px solid #e8f0ff; padding:12px; border-radius:8px; margin:12px 0;">
-      <h4 style="margin:0 0 10px 0;">💻 Curso — <em>Blindagem Digital: como não cair em golpes</em></h4>
-      <p style="margin:0 0 10px 0; color:#333;">Um curso prático e direto ao ponto para que você pare de depender apenas da lei — e passe a se proteger de verdade.</p>
-
-      <ul style="margin:0 0 12px 0; padding:0 0 0 18px; color:#222;">
-        <li style="margin:8px 0;">✅ Identificar e evitar golpes de phishing, clonagem de WhatsApp e falsas promoções.</li>
-        <li style="margin:8px 0;">✅ Criar senhas fortes e gerenciá-las com segurança.</li>
-        <li style="margin:8px 0;">✅ Ativar autenticação em dois fatores (2FA) e impedir invasões.</li>
-        <li style="margin:8px 0;">✅ Reduzir exposição de dados pessoais na internet.</li>
-        <li style="margin:8px 0;">✅ Fazer backups seguros e recuperar dados sem pânico.</li>
-        <li style="margin:8px 0;">✅ Reconhecer sinais de monitoramento ou invasão no seu dispositivo.</li>
-      </ul>
-
-      <p style="margin:6px 0; color:#444;"><strong>🎯 Bônus:</strong> Lista atualizada das principais fraudes ativas no Brasil e como identificá-las em segundos.</p>
-
-      <div style="margin-top:14px;">
-        <a href="#" role="button" style="display:inline-block; text-decoration:none; background:linear-gradient(90deg,#075985,#0ea5a4); color:#fff; padding:12px 18px; border-radius:10px; font-weight:600; box-shadow:0 6px 18px rgba(8,145,178,0.18);" aria-label="Garanta sua vaga no curso Blindagem Digital">Disponível em preve</a>
-      </div>
-    </section>
-
-    <p style="margin-top:12px; color:#666;">Se você não quer ser mais uma estatística nos noticiários de cibercrime, <strong>comece hoje a proteger seu mundo digital</strong>. Substitua o link do botão pela página do seu curso e disponibilize imediatamente.</p>
-  </article>
-</section>
-
-
-
-
-    <!-- Depoimentos -->
-    <div class="section" id="depoimentos">
-        <h2>Depoimentos</h2>
-        <blockquote>
-            "Em breve"
-            <br><br>
-            — xxxxxxx
-        </blockquote>
-    </div>
-
-    <!-- Contato -->
-    <div class="section" id="contato">
-        <h2>Contato</h2>
-        <p>Preencha o formulário abaixo para entrar em contato diretamente:</p>
-        <form action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
-            <input type="text" name="nome" placeholder="Seu nome" required>
-            <input type="email" name="_replyto" placeholder="Seu email" required>
-            <textarea name="mensagem" placeholder="Sua mensagem" rows="5" required></textarea>
-            <button type="submit">Enviar</button>
-        </form>
+        </div>
     </div>
 
     <script>
-        function showSection(id) {
+        function showSection(id, element) {
             document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
             document.getElementById(id).classList.add('active');
+
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            element.classList.add('active');
         }
     </script>
 
